@@ -1,0 +1,2684 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دُرّة المنزل | Durr Al-Manzil - متجر أساس المنزل الفاخر</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --gold: #C9A96E;
+            --gold-light: #E8D5A3;
+            --gold-dark: #A68B4B;
+            --cream: #F5F0E8;
+            --cream-dark: #EDE7DB;
+            --charcoal: #1A1A1A;
+            --dark: #0D0D0D;
+            --dark-card: #161616;
+            --text-light: #E8E4DC;
+            --text-muted: #9A958D;
+            --border: rgba(201, 169, 110, 0.15);
+            --border-hover: rgba(201, 169, 110, 0.4);
+            --shadow-gold: rgba(201, 169, 110, 0.1);
+            --gradient-gold: linear-gradient(135deg, #C9A96E 0%, #E8D5A3 50%, #C9A96E 100%);
+            --gradient-dark: linear-gradient(180deg, #0D0D0D 0%, #1A1A1A 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Kufi Arabic', 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text-light);
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--dark); }
+        ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(201, 169, 110, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(201, 169, 110, 0.4); }
+        }
+        @keyframes rotate-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .animate {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Top Bar */
+        .top-bar {
+            background: var(--charcoal);
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .top-bar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .top-bar-left, .top-bar-right {
+            display: flex;
+            gap: 24px;
+            align-items: center;
+        }
+        .top-bar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .top-bar a:hover { color: var(--gold); }
+        .top-bar i { margin-left: 6px; color: var(--gold); }
+        .lang-switch {
+            cursor: pointer;
+            padding: 2px 10px;
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        .lang-switch:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(13, 13, 13, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            transition: all 0.4s ease;
+        }
+        .navbar.scrolled {
+            background: rgba(13, 13, 13, 0.95);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+        }
+        .nav-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-gold);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .logo-text .brand-ar {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 1px;
+            line-height: 1.2;
+        }
+        .logo-text .brand-en {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            gap: 36px;
+            list-style: none;
+        }
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+            position: relative;
+            padding: 8px 0;
+            transition: color 0.3s;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .nav-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+            background: transparent;
+            font-size: 1rem;
+            position: relative;
+        }
+        .nav-icon:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+            background: rgba(201, 169, 110, 0.05);
+        }
+        .nav-icon .badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            width: 18px;
+            height: 18px;
+            background: var(--gold);
+            color: var(--dark);
+            border-radius: 50%;
+            font-size: 0.65rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 20%, rgba(201, 169, 110, 0.05) 0%, transparent 40%),
+                var(--dark);
+        }
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A96E' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 120px 40px 80px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        .hero-text { animation: fadeInUp 1s ease 0.2s both; }
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 20px;
+            background: rgba(201, 169, 110, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 24px;
+        }
+        .hero-label .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--gold);
+            border-radius: 50%;
+            animation: pulse-glow 2s infinite;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            color: var(--cream);
+        }
+        .hero-title .highlight {
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 500px;
+            margin-bottom: 36px;
+            line-height: 2;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+            border: none;
+            font-family: inherit;
+        }
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--dark);
+            box-shadow: 0 8px 30px rgba(201, 169, 110, 0.3);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(201, 169, 110, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--gold);
+            border: 1.5px solid var(--gold);
+        }
+        .btn-outline:hover {
+            background: rgba(201, 169, 110, 0.1);
+            transform: translateY(-3px);
+        }
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+        }
+        .stat-item { text-align: center; }
+        .stat-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--gold);
+            line-height: 1;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeIn 1.2s ease 0.4s both;
+        }
+        .hero-img-wrapper {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+        }
+        .hero-img-wrapper::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            z-index: 2;
+            pointer-events: none;
+        }
+        .hero-img-wrapper img {
+            width: 100%;
+            height: 550px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+        .hero-img-wrapper:hover img { transform: scale(1.03); }
+        .hero-badge {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 24px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+            animation: float 4s ease-in-out infinite;
+        }
+        .hero-badge-text {
+            font-size: 0.8rem;
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .hero-badge-sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .hero-floating {
+            position: absolute;
+            top: 40px;
+            right: -30px;
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: rotate-slow 20s linear infinite;
+        }
+        .hero-floating i {
+            font-size: 1.5rem;
+            color: var(--gold);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: var(--gold);
+            margin-bottom: 16px;
+            letter-spacing: 2px;
+        }
+        .section-label::before, .section-label::after {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: var(--gold);
+            opacity: 0.5;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+            font-weight: 800;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+        .section-desc {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.9;
+        }
+
+        /* Categories */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .category-card {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 3/4;
+            border: 1px solid var(--border);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .category-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .category-card:hover img { transform: scale(1.1); }
+        .category-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.3) 50%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+        }
+        .category-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+        .category-count {
+            font-size: 0.75rem;
+            color: var(--gold);
+        }
+        .category-arrow {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(201, 169, 110, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.3s;
+        }
+        .category-card:hover .category-arrow {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Products */
+        .products-section {
+            background: var(--gradient-dark);
+            position: relative;
+        }
+        .products-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-gold);
+            opacity: 0.3;
+        }
+        .products-filter {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 10px 24px;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: rgba(201, 169, 110, 0.1);
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .product-card {
+            background: var(--dark-card);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .product-img-wrapper {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 1;
+        }
+        .product-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .product-card:hover .product-img-wrapper img { transform: scale(1.08); }
+        .product-tag {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            padding: 6px 14px;
+            background: var(--gold);
+            color: var(--dark);
+            font-size: 0.7rem;
+            font-weight: 700;
+            border-radius: 20px;
+        }
+        .product-actions {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            display: flex;
+            gap: 8px;
+            opacity: 0;
+            transition: all 0.4s;
+        }
+        .product-card:hover .product-actions {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .product-action-btn {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .product-action-btn:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark);
+        }
+        .product-info { padding: 20px; }
+        .product-category {
+            font-size: 0.7rem;
+            color: var(--gold);
+            margin-bottom: 6px;
+            letter-spacing: 1px;
+        }
+        .product-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .product-price-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gold);
+        }
+        .product-old-price {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-decoration: line-through;
+            margin-right: 8px;
+        }
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .product-rating i { color: var(--gold); }
+
+        /* Featured Collection */
+        .featured-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .featured-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 50%);
+        }
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            align-items: center;
+            background: var(--dark-card);
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .featured-img {
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            min-height: 500px;
+        }
+        .featured-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .featured-grid:hover .featured-img img { transform: scale(1.05); }
+        .featured-content { padding: 60px; }
+        .featured-label {
+            font-size: 0.8rem;
+            color: var(--gold);
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .featured-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--cream);
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+        .featured-desc {
+            color: var(--text-muted);
+            line-height: 2;
+            margin-bottom: 28px;
+        }
+        .featured-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        .feature-item i {
+            width: 32px;
+            height: 32px;
+            background: rgba(201, 169, 110, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 0.8rem;
+        }
+
+        /* Why Us */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+        }
+        .why-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px 28px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-gold);
+            transform: scaleX(0);
+            transition: transform 0.5s;
+        }
+        .why-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--border-hover);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        .why-card:hover::before { transform: scaleX(1); }
+        .why-icon {
+            width: 64px;
+            height: 64px;
+            background: rgba(201, 169, 110, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+            color: var(--gold);
+            transition: all 0.3s;
+        }
+        .why-card:hover .why-icon {
+            background: rgba(201, 169, 110, 0.15);
+            transform: scale(1.1);
+        }
+        .why-title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 10px;
+        }
+        .why-desc {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            background: var(--gradient-dark);
+            position: relative;
+        }
+        .testimonials-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gradient-gold);
+            opacity: 0.3;
+        }
+        .testimonials-slider {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .testimonial-card {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px;
+            position: relative;
+            transition: all 0.4s;
+        }
+        .testimonial-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+        .testimonial-quote {
+            font-size: 3rem;
+            color: var(--gold);
+            opacity: 0.3;
+            line-height: 1;
+            margin-bottom: 16px;
+            font-family: 'Playfair Display', serif;
+        }
+        .testimonial-text {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 2;
+            margin-bottom: 24px;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--gold);
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--cream);
+            font-size: 0.9rem;
+        }
+        .testimonial-role {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .testimonial-stars {
+            color: var(--gold);
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            position: relative;
+            overflow: hidden;
+        }
+        .contact-bg {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 50%, rgba(201, 169, 110, 0.06) 0%, transparent 50%);
+        }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+        .contact-info h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--cream);
+            margin-bottom: 16px;
+        }
+        .contact-info > p {
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            line-height: 2;
+        }
+        .contact-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            min-width: 50px;
+            background: rgba(201, 169, 110, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        .contact-item-text h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+        .contact-item-text p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .contact-form-wrapper {
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 48px;
+            position: relative;
+        }
+        .contact-form-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-gold);
+            border-radius: 24px 24px 0 0;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.1);
+        }
+        .form-group input::placeholder,
+        .form-group textarea::placeholder { color: var(--text-muted); }
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .form-submit {
+            width: 100%;
+            margin-top: 8px;
+        }
+        .form-note {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .form-note i {
+            color: var(--gold);
+            margin-left: 4px;
+        }
+
+        /* Newsletter */
+        .newsletter-section {
+            background: var(--charcoal);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+        .newsletter-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 60px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+        .newsletter-text h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--cream);
+            margin-bottom: 8px;
+        }
+        .newsletter-text p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+            min-width: 400px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            background: var(--dark);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+        .newsletter-form input::placeholder { color: var(--text-muted); }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            border-top: 1px solid var(--border);
+        }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 40px 40px;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+            gap: 48px;
+        }
+        .footer-brand .logo-text { margin-bottom: 20px; }
+        .footer-brand p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 2;
+            margin-bottom: 24px;
+        }
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        .footer-social a:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        .footer-title {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--cream);
+            margin-bottom: 24px;
+            position: relative;
+            padding-bottom: 12px;
+        }
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30px;
+            height: 2px;
+            background: var(--gold);
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links a:hover {
+            color: var(--gold);
+            padding-right: 8px;
+        }
+        .footer-links a::before {
+            content: '›';
+            color: var(--gold);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .footer-links a:hover::before { opacity: 1; }
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .footer-contact-item i {
+            color: var(--gold);
+            margin-top: 4px;
+            font-size: 0.9rem;
+        }
+        .footer-contact-item span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 24px 40px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .footer-bottom p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .footer-bottom-links {
+            display: flex;
+            gap: 24px;
+        }
+        .footer-bottom-links a {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-bottom-links a:hover { color: var(--gold); }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .categories-grid, .products-grid { grid-template-columns: repeat(3, 1fr); }
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonials-slider { grid-template-columns: repeat(2, 1fr); }
+            .footer-content { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 992px) {
+            .hero-content { grid-template-columns: 1fr; text-align: center; }
+            .hero-desc { margin: 0 auto 36px; }
+            .hero-btns { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-visual { order: -1; max-width: 500px; margin: 0 auto; }
+            .featured-grid { grid-template-columns: 1fr; }
+            .featured-img { min-height: 300px; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .newsletter-content { flex-direction: column; text-align: center; }
+            .newsletter-form { min-width: auto; width: 100%; max-width: 500px; }
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .categories-grid, .products-grid { grid-template-columns: repeat(2, 1fr); }
+            .why-grid { grid-template-columns: 1fr; }
+            .testimonials-slider { grid-template-columns: 1fr; }
+            .footer-content { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+            .section { padding: 60px 20px; }
+            .hero-content { padding: 100px 20px 60px; }
+            .nav-content { padding: 0 20px; }
+            .form-row { grid-template-columns: 1fr; }
+            .featured-content { padding: 36px; }
+        }
+        @media (max-width: 480px) {
+            .categories-grid, .products-grid { grid-template-columns: 1fr; }
+            .hero-title { font-size: 2rem; }
+            .hero-stats { flex-direction: column; gap: 20px; }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+        .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--dark-card);
+            border-left: 1px solid var(--border);
+            z-index: 2000;
+            padding: 100px 32px 32px;
+            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu-close {
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        .mobile-menu-links { list-style: none; }
+        .mobile-menu-links li { margin-bottom: 8px; }
+        .mobile-menu-links a {
+            display: block;
+            padding: 12px 0;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+            transition: color 0.3s;
+        }
+        .mobile-menu-links a:hover { color: var(--gold); }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            left: -420px;
+            width: 400px;
+            max-width: 90vw;
+            height: 100vh;
+            background: var(--dark-card);
+            border-right: 1px solid var(--border);
+            z-index: 2000;
+            transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex;
+            flex-direction: column;
+        }
+        .cart-sidebar.active { left: 0; }
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-header h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--cream);
+        }
+        .cart-close {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        .cart-close:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+        }
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            padding: 16px;
+            background: var(--dark);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            border: 1px solid var(--border);
+        }
+        .cart-item-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+        .cart-item-info { flex: 1; }
+        .cart-item-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--cream);
+            margin-bottom: 4px;
+        }
+        .cart-item-price {
+            font-size: 0.9rem;
+            color: var(--gold);
+            font-weight: 700;
+        }
+        .cart-item-qty {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .qty-btn {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+        .qty-btn:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .cart-item-qty span {
+            font-size: 0.85rem;
+            min-width: 20px;
+            text-align: center;
+        }
+        .cart-item-remove {
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            align-self: flex-start;
+        }
+        .cart-item-remove:hover { color: #e74c3c; }
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+        }
+        .cart-empty i {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+        .cart-footer {
+            padding: 24px;
+            border-top: 1px solid var(--border);
+            background: var(--dark);
+        }
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .cart-total span:first-child { color: var(--text-muted); }
+        .cart-total span:last-child {
+            font-weight: 800;
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        .cart-checkout { width: 100%; }
+
+        /* Search Overlay */
+        .search-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(13, 13, 13, 0.97);
+            z-index: 3000;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding-top: 120px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+        }
+        .search-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .search-container {
+            width: 100%;
+            max-width: 700px;
+            padding: 0 20px;
+        }
+        .search-input-wrapper { position: relative; }
+        .search-input-wrapper i {
+            position: absolute;
+            left: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        .search-input {
+            width: 100%;
+            padding: 20px 24px 20px 56px;
+            background: var(--dark-card);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            color: var(--text-light);
+            font-family: inherit;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.1);
+        }
+        .search-close {
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: transparent;
+            color: var(--text-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        .search-close:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--dark-card);
+            border: 1px solid var(--gold);
+            border-radius: 12px;
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 5000;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast i {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+        .toast span {
+            font-size: 0.9rem;
+            color: var(--cream);
+        }
+
+        /* Scroll to Top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--dark-card);
+            border: 1px solid var(--border);
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 100;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        .scroll-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .scroll-top:hover {
+            background: var(--gold);
+            color: var(--dark);
+            border-color: var(--gold);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul class="mobile-menu-links">
+            <li><a href="#home" onclick="toggleMobileMenu()">الرئيسية</a></li>
+            <li><a href="#categories" onclick="toggleMobileMenu()">الأقسام</a></li>
+            <li><a href="#products" onclick="toggleMobileMenu()">المنتجات</a></li>
+            <li><a href="#featured" onclick="toggleMobileMenu()">المجموعة المميزة</a></li>
+            <li><a href="#why-us" onclick="toggleMobileMenu()">لماذا نحن</a></li>
+            <li><a href="#testimonials" onclick="toggleMobileMenu()">آراء العملاء</a></li>
+            <li><a href="#contact" onclick="toggleMobileMenu()">تواصل معنا</a></li>
+        </ul>
+    </div>
+
+    <!-- Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>سلة التسوق <span id="cartCountBadge" style="color:var(--gold);font-size:0.85rem">(0)</span></h3>
+            <button class="cart-close" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <div class="cart-empty">
+                <i class="fas fa-shopping-bag"></i>
+                <p>سلة التسوق فارغة</p>
+            </div>
+        </div>
+        <div class="cart-footer" id="cartFooter" style="display:none">
+            <div class="cart-total">
+                <span>المجموع:</span>
+                <span id="cartTotal">0 ر.س</span>
+            </div>
+            <button class="btn btn-primary cart-checkout">
+                <i class="fas fa-credit-card"></i>
+                إتمام الشراء
+            </button>
+        </div>
+    </div>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <button class="search-close" onclick="toggleSearch()">
+            <i class="fas fa-times"></i>
+        </button>
+        <div class="search-container">
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" class="search-input" placeholder="ابحث عن منتج..." id="searchInput">
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">تمت الإضافة للسلة</span>
+    </div>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="top-bar-right">
+                <span><i class="fas fa-phone-alt"></i> 9200 12345</span>
+                <span><i class="fas fa-envelope"></i> info@durr-manzil.com</span>
+            </div>
+            <div class="top-bar-left">
+                <span><i class="fas fa-truck"></i> شحن مجاني للطلبات فوق 500 ر.س</span>
+                <span class="lang-switch" onclick="switchLang()">English</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-content">
+            <a href="#home" class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="logo-text">
+                    <span class="brand-ar">دُرّة المنزل</span>
+                    <span class="brand-en">Durr Al-Manzil</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">الرئيسية</a></li>
+                <li><a href="#categories">الأقسام</a></li>
+                <li><a href="#products">المنتجات</a></li>
+                <li><a href="#featured">المجموعة المميزة</a></li>
+                <li><a href="#why-us">لماذا نحن</a></li>
+                <li><a href="#testimonials">الآراء</a></li>
+                <li><a href="#contact">تواصل معنا</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="nav-icon" onclick="toggleSearch()">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="nav-icon" onclick="toggleCart()">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="badge" id="navCartBadge">0</span>
+                </button>
+                <button class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </button>
+                <div class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-label">
+                    <span class="dot"></span>
+                    متجر أساس المنزل الفاخر
+                </div>
+                <h1 class="hero-title">
+                    اجعل منزلك<br>
+                    <span class="highlight">تحفة فنية</span><br>
+                    تعكس ذوقك الرفيع
+                </h1>
+                <p class="hero-desc">
+                    نقدم لك تشكيلة حصرية من أجود المفروشات والإكسسوارات المنزلية الفاخرة،
+                    مصممة بعناية لترتقي بكل ركن في منزلك إلى مستوى جديد من الأناقة والرقي.
+                </p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn btn-primary">
+                        <i class="fas fa-shopping-bag"></i>
+                        تسوق الآن
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <i class="fas fa-ruler-combined"></i>
+                        معاينة وقياس مجاني
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-num">+500</div>
+                        <div class="stat-label">منتج فاخر</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">+12K</div>
+                        <div class="stat-label">عميل سعيد</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">+50</div>
+                        <div class="stat-label">علامة تجارية</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80" alt="غرفة معيشة فاخرة">
+                </div>
+                <div class="hero-badge">
+                    <div class="hero-badge-text">معاينة وقياس مجاني</div>
+                    <div class="hero-badge-sub">في منزلك - بدون أي التزام</div>
+                </div>
+                <div class="hero-floating">
+                    <i class="fas fa-crown"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section" id="categories">
+        <div class="section-header animate">
+            <div class="section-label">تصنيفاتنا</div>
+            <h2 class="section-title">استكشف أقسامنا المميزة</h2>
+            <p class="section-desc">
+                مجموعة متنوعة من الأقسام المصممة لتلبي كل احتياجات منزلك بأناقة وفخامة
+            </p>
+        </div>
+        <div class="categories-grid">
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="غرفة المعيشة">
+                <div class="category-overlay">
+                    <div class="category-name">غرفة المعيشة</div>
+                    <div class="category-count">+120 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=600&q=80" alt="غرفة النوم">
+                <div class="category-overlay">
+                    <div class="category-name">غرفة النوم</div>
+                    <div class="category-count">+85 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="المطبخ">
+                <div class="category-overlay">
+                    <div class="category-name">المطبخ والطعام</div>
+                    <div class="category-count">+95 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=600&q=80" alt="الحمام">
+                <div class="category-overlay">
+                    <div class="category-name">الحمام والسبا</div>
+                    <div class="category-count">+65 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1493934558415-9d19f0b2b4d2?w=600&q=80" alt="الديكور">
+                <div class="category-overlay">
+                    <div class="category-name">الديكور والإكسسوارات</div>
+                    <div class="category-count">+150 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&q=80" alt="الإضاءة">
+                <div class="category-overlay">
+                    <div class="category-name">الإضاءة</div>
+                    <div class="category-count">+45 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1594026112284-02bb6f3352fe?w=600&q=80" alt="السجاد">
+                <div class="category-overlay">
+                    <div class="category-name">السجاد والمفروشات</div>
+                    <div class="category-count">+70 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+            <div class="category-card animate">
+                <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=600&q=80" alt="المكتب">
+                <div class="category-overlay">
+                    <div class="category-name">المكتب المنزلي</div>
+                    <div class="category-count">+55 منتج</div>
+                </div>
+                <div class="category-arrow"><i class="fas fa-arrow-left"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="section products-section" id="products">
+        <div class="section-header animate">
+            <div class="section-label">منتجاتنا المميزة</div>
+            <h2 class="section-title">تشكيلة حصرية من الأناقة</h2>
+            <p class="section-desc">
+                اختر من بين أجود المنتجات الفاخرة التي نختارها بعناية لمنزلك
+            </p>
+        </div>
+        <div class="products-filter animate">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="living">غرفة المعيشة</button>
+            <button class="filter-btn" data-filter="bedroom">غرفة النوم</button>
+            <button class="filter-btn" data-filter="kitchen">المطبخ</button>
+            <button class="filter-btn" data-filter="decor">الديكور</button>
+            <button class="filter-btn" data-filter="lighting">الإضاءة</button>
+        </div>
+        <div class="products-grid" id="productsGrid">
+            <div class="product-card animate" data-category="living">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80" alt="كنبة جلدية فاخرة">
+                    <span class="product-tag">جديد</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('كنبة جلدية فاخرة', 4599, 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">غرفة المعيشة</div>
+                    <div class="product-name">كنبة جلدية إيطالية فاخرة - 3 مقاعد</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">4,599 ر.س</span>
+                            <span class="product-old-price">5,200 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card animate" data-category="decor">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1581783342308-f792ca438919?w=500&q=80" alt="مرآة فاخرة">
+                    <span class="product-tag">الأكثر مبيعاً</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('مرآة فاخرة مزخرفة', 1299, 'https://images.unsplash.com/photo-1581783342308-f792ca438919?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">الديكور</div>
+                    <div class="product-name">مرآة جدارية مزخرفة بالذهب - 120x80 سم</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">1,299 ر.س</span>
+                            <span class="product-old-price">1,599 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card animate" data-category="lighting">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=500&q=80" alt="ثريا فاخرة">
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('ثريا كريستال فاخرة', 2899, 'https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">الإضاءة</div>
+                    <div class="product-name">ثريا كريستال ذهبية - 6 أذرع</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">2,899 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card animate" data-category="bedroom">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=500&q=80" alt="طقم سرير فاخر">
+                    <span class="product-tag">خصم 20%</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('طقم سرير قطن مصري', 1899, 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">غرفة النوم</div>
+                    <div class="product-name">طقم سرير قطن مصري 100% - 6 قطع</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">1,899 ر.س</span>
+                            <span class="product-old-price">2,399 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.7</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card animate" data-category="kitchen">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80" alt="طقم مطبخ فاخر">
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('طقم أواني نحاسية', 1599, 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">المطبخ</div>
+                    <div class="product-name">طقم أواني طهي نحاسية - 12 قطعة</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">1,599 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.9</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card animate" data-category="living">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=500&q=80" alt="طاولة قهوة">
+                    <span class="product-tag">جديد</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('طاولة قهوة رخامية', 2199, 'https://images.unsplash.com/photo-1532372320572-cda25653a26d?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">غرفة المعيشة</div>
+                    <div class="product-name">طاولة قهوة رخامية مع قاعدة ذهبية</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">2,199 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.8</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card animate" data-category="decor">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&q=80" alt="مزهرية فاخرة">
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('مزهرية سيراميك يدوية', 699, 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">الديكور</div>
+                    <div class="product-name">مزهرية سيراميك يدوية الصنع - طقم 3 قطع</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">699 ر.س</span>
+                            <span class="product-old-price">899 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>4.6</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card animate" data-category="bedroom">
+                <div class="product-img-wrapper">
+                    <img src="https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=500&q=80" alt="سجادة فاخرة">
+                    <span class="product-tag">محدود</span>
+                    <div class="product-actions">
+                        <button class="product-action-btn" onclick="addToCart('سجادة حرير يدوي', 3299, 'https://images.unsplash.com/photo-1616627547584-bf28cee262db?w=500&q=80')"><i class="fas fa-shopping-bag"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-heart"></i></button>
+                        <button class="product-action-btn"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div class="product-category">السجاد</div>
+                    <div class="product-name">سجادة حرير يدوي الصنع - 200x300 سم</div>
+                    <div class="product-price-row">
+                        <div>
+                            <span class="product-price">3,299 ر.س</span>
+                        </div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <span>5.0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Collection -->
+    <section class="section featured-section" id="featured">
+        <div class="featured-bg"></div>
+        <div class="section-header animate">
+            <div class="section-label">المجموعة المميزة</div>
+            <h2 class="section-title">تشكيلة الموسم الجديد</h2>
+            <p class="section-desc">
+                اكتشف أحدث المجموعات التي تم اختيارها خصيصاً لهذا الموسم
+            </p>
+        </div>
+        <div class="featured-grid animate">
+            <div class="featured-img">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80" alt="مجموعة الموسم">
+            </div>
+            <div class="featured-content">
+                <div class="featured-label">مجموعة صيف 2026</div>
+                <h3 class="featured-title">أناقة الشرق الأوسط المعاصرة</h3>
+                <p class="featured-desc">
+                    مجموعة حصرية تجمع بين روح التراث العربي الأصيل والتصميم العصري الفاخر.
+                    كل قطعة في هذه المجموعة تم اختيارها بعناية لتعكس ذوقك الرفيع وتضيف لمسة
+                    من الفخامة إلى كل ركن في منزلك.
+                </p>
+                <div class="featured-features">
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>مواد طبيعية 100%</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>تصميم حصري</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>ضمان 5 سنوات</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>صناعة يدوية</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>شحن سريع</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-check"></i>
+                        <span>إرجاع سهل</span>
+                    </div>
+                </div>
+                <a href="#products" class="btn btn-primary">
+                    <i class="fas fa-shopping-bag"></i>
+                    اكتشف المجموعة
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Us -->
+    <section class="section" id="why-us">
+        <div class="section-header animate">
+            <div class="section-label">لماذا نحن</div>
+            <h2 class="section-title">تجربة تسوق فاخرة بمعايير عالمية</h2>
+            <p class="section-desc">
+                نحن لا نبيع منتجات فقط، نقدم تجربة تسوق استثنائية تليق بمنزلك
+            </p>
+        </div>
+        <div class="why-grid">
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="why-title">جودة لا تُضاهى</h3>
+                <p class="why-desc">
+                    نختار كل منتج بعناية فائقة من أفضل المصانع العالمية لنضمن لك أعلى معايير الجودة
+                </p>
+            </div>
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-truck-fast"></i>
+                </div>
+                <h3 class="why-title">شحن سريع وآمن</h3>
+                <p class="why-desc">
+                    نوصل طلباتك إلى باب منزلك خلال 24-48 ساعة مع تغليف حماية ممتاز
+                </p>
+            </div>
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-rotate-left"></i>
+                </div>
+                <h3 class="why-title">إرجاع سهل خلال 30 يوم</h3>
+                <p class="why-desc">
+                    غير راضٟ؟ أعد المنتج خلال 30 يوماً واسترد أموالك بالكامل بدون أسئلة
+                </p>
+            </div>
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="why-title">دعم على مدار الساعة</h3>
+                <p class="why-desc">
+                    فريق خدمة عملاء متخصص جاهز لمساعدتك في أي وقت عبر الهاتف أو الواتساب
+                </p>
+            </div>
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-ruler-combined"></i>
+                </div>
+                <h3 class="why-title">معاينة وقياس مجاني</h3>
+                <p class="why-desc">
+                    نأتي إلى منزلك لمعاينة المنتجات وقياس المساحات بدقة قبل الشراء
+                </p>
+            </div>
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <h3 class="why-title">ضمان شامل</h3>
+                <p class="why-desc">
+                    جميع منتجاتنا مضمونة ضد عيوب الصناعة مع خدمة صيانة مجانية لمدة عامين
+                </p>
+            </div>
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <h3 class="why-title">دفع آمن ومرن</h3>
+                <p class="why-desc">
+                    نوفر خيارات دفع متعددة وآمنة تشمل الدفع عند الاستلام والتقسيط بدون فوائد
+                </p>
+            </div>
+            <div class="why-card animate">
+                <div class="why-icon">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <h3 class="why-title">تغليف هدايا فاخر</h3>
+                <p class="why-desc">
+                    خدمة تغليف هدايا مجانية بتصميم أنيق لكل مناسبة خاصة
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section testimonials-section" id="testimonials">
+        <div class="section-header animate">
+            <div class="section-label">آراء عملائنا</div>
+            <h2 class="section-title">ما يقوله عملاؤنا عنا</h2>
+            <p class="section-desc">
+                نفخر بثقة آلاف العملاء الذين اختارونا لتحويل منازلهم
+            </p>
+        </div>
+        <div class="testimonials-slider">
+            <div class="testimonial-card animate">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">
+                    تجربة رائعة من البداية للنهاية! خدمة المعاينة المجانية كانت ممتازة،
+                    الفريق جاء إلى منزلي وقاس كل المساحات بدقة. المنتجات فاخرة جداً
+                    وتفوقت على توقعاتي. أنصح الجميع بالتعامل مع دُرّة المنزل.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="عميل" class="testimonial-avatar">
+                    <div>
+                        <div class="testimonial-name">أحمد العتيبي</div>
+                        <div class="testimonial-role">الرياض</div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card animate">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">
+                    اشتريت طقم السرير القطني وكنبة الجلد، الجودة ممتازة والتصميم فاخر.
+                    الشحن كان سريع جداً والتغليف محترم. بالتأكيد سأعود للشراء مرة أخرى.
+                    شكراً لفريق دُرّة المنزل على الاحترافية.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="عميلة" class="testimonial-avatar">
+                    <div>
+                        <div class="testimonial-name">نورة السالم</div>
+                        <div class="testimonial-role">جدة</div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card animate">
+                <div class="testimonial-quote">"</div>
+                <p class="testimonial-text">
+                    أحببت فكرة المعاينة والقياس المجاني، هذا ما يميز دُرّة المنزل عن غيرها.
+                    الفريق محترف جداً ويعطي نصائح قيمة. المنتجات تستحق كل ريال،
+                    جودة عالمية بمعايير خليجية. أشكركم على التميز.
+                </p>
+                <div class="testimonial-author">
+                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="عميل" class="testimonial-avatar">
+                    <div>
+                        <div class="testimonial-name">خالد المطيري</div>
+                        <div class="testimonial-role">الدمام</div>
+                        <div class="testimonial-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact-section" id="contact">
+        <div class="contact-bg"></div>
+        <div class="section-header animate">
+            <div class="section-label">تواصل معنا</div>
+            <h2 class="section-title">معاينة وقياس مجاني في منزلك</h2>
+            <p class="section-desc">
+                املأ النموذج وسيقوم فريقنا بالتواصل معك لتحديد موعد المعاينة المجانية
+            </p>
+        </div>
+        <div class="contact-grid">
+            <div class="contact-info animate">
+                <h3>نحن هنا لمساعدتك</h3>
+                <p>
+                    فريقنا جاهز للإجابة على جميع استفساراتك ومساعدتك في اختيار الأفضل
+                    لمنزلك. املأ النموذج أو تواصل معنا مباشرة.
+                </p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>اتصل بنا</h4>
+                            <p>9200 12345<br>من السبت إلى الخميس، 9 ص - 9 م</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>البريد الإلكتروني</h4>
+                            <p>info@durr-manzil.com<br>support@durr-manzil.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>المعرض الرئيسي</h4>
+                            <p>طريق الملك فهد، حي العليا<br>الرياض، المملكة العربية السعودية</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-item-text">
+                            <h4>واتساب</h4>
+                            <p>+966 50 123 4567<br>رد سريع خلال دقائق</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form-wrapper animate">
+                <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">الاسم الكامل *</label>
+                            <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">رقم الجوال *</label>
+                            <input type="tel" id="phone" name="phone" placeholder="05xxxxxxxx" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" placeholder="example@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="city">المدينة *</label>
+                            <select id="city" name="city" required>
+                                <option value="">اختر المدينة</option>
+                                <option value="riyadh">الرياض</option>
+                                <option value="jeddah">جدة</option>
+                                <option value="dammam">الدمام</option>
+                                <option value="khobar">الخبر</option>
+                                <option value="makkah">مكة المكرمة</option>
+                                <option value="madinah">المدينة المنورة</option>
+                                <option value="other">مدينة أخرى</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">نوع الخدمة *</label>
+                        <select id="service" name="service" required>
+                            <option value="">اختر الخدمة</option>
+                            <option value="preview">معاينة وقياس مجاني</option>
+                            <option value="consultation">استشارة تصميم داخلي</option>
+                            <option value="order">طلب منتج</option>
+                            <option value="inquiry">استفسار عام</option>
+                            <option value="complaint">شكوى أو اقتراح</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">التفاصيل</label>
+                        <textarea id="message" name="message" placeholder="أخبرنا بالمزيد عن احتياجاتك..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">
+                        <i class="fas fa-paper-plane"></i>
+                        إرسال الطلب
+                    </button>
+                    <p class="form-note">
+                        <i class="fas fa-lock"></i>
+                        معلوماتك محمية ولا نشاركها مع أي طرف ثالث
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <div class="newsletter-text">
+                <h3>اشترك في نشرتنا الإخبارية</h3>
+                <p>احصل على أحدث العروض والتشكيلات الحصرية مباشرة إلى بريدك</p>
+            </div>
+            <form class="newsletter-form" onsubmit="handleNewsletter(event)">
+                <input type="email" placeholder="أدخل بريدك الإلكتروني" required>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-paper-plane"></i>
+                    اشترك
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <div class="logo-text">
+                    <span class="brand-ar" style="font-size:1.5rem">دُرّة المنزل</span>
+                    <span class="brand-en">Durr Al-Manzil</span>
+                </div>
+                <p>
+                    وجهتك الأولى للأثاث والديكور المنزلي الفاخر في المملكة العربية السعودية.
+                    نقدم لك تجربة تسوق استثنائية تجمع بين الأصالة والمعاصرة.
+                </p>
+                <div class="footer-social">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-snapchat"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="footer-title">الأقسام</h4>
+                <ul class="footer-links">
+                    <li><a href="#">غرفة المعيشة</a></li>
+                    <li><a href="#">غرفة النوم</a></li>
+                    <li><a href="#">المطبخ والطعام</a></li>
+                    <li><a href="#">الحمام والسبا</a></li>
+                    <li><a href="#">الديكور</a></li>
+                    <li><a href="#">الإضاءة</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">خدماتنا</h4>
+                <ul class="footer-links">
+                    <li><a href="#">معاينة وقياس مجاني</a></li>
+                    <li><a href="#">استشارة تصميم داخلي</a></li>
+                    <li><a href="#">تغليف هدايا</a></li>
+                    <li><a href="#">تركيب الأثاث</a></li>
+                    <li><a href="#">الصيانة الدورية</a></li>
+                    <li><a href="#">التقسيط بدون فوائد</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">الشركة</h4>
+                <ul class="footer-links">
+                    <li><a href="#">من نحن</a></li>
+                    <li><a href="#">سياسة الخصوصية</a></li>
+                    <li><a href="#">شروط الاستخدام</a></li>
+                    <li><a href="#">سياسة الإرجاع</a></li>
+                    <li><a href="#">الوظائف</a></li>
+                    <li><a href="#">اتصل بنا</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-title">تواصل معنا</h4>
+                <div class="footer-contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <span>9200 12345</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>info@durr-manzil.com</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>طريق الملك فهد، الرياض</span>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+966 50 123 4567</span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>جميع الحقوق محفوظة &copy; 2026 دُرّة المنزل | Durr Al-Manzil</p>
+            <div class="footer-bottom-links">
+                <a href="#">سياسة الخصوصية</a>
+                <a href="#">شروط الاستخدام</a>
+                <a href="#">سياسة الإرجاع</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== CART =====
+        let cart = [];
+
+        function addToCart(name, price, image) {
+            const existing = cart.find(item => item.name === name);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ name, price, image, qty: 1 });
+            }
+            updateCartUI();
+            showToast('تمت إضافة ' + name + ' إلى السلة');
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const total = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+            const count = cart.reduce((sum, item) => sum + item.qty, 0);
+
+            document.getElementById('navCartBadge').textContent = count;
+            document.getElementById('cartCountBadge').textContent = '(' + count + ')';
+            document.getElementById('cartTotal').textContent = total.toLocaleString() + ' ر.س';
+
+            const cartItems = document.getElementById('cartItems');
+            const cartFooter = document.getElementById('cartFooter');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="cart-empty">
+                        <i class="fas fa-shopping-bag"></i>
+                        <p>سلة التسوق فارغة</p>
+                    </div>
+                `;
+                cartFooter.style.display = 'none';
+            } else {
+                cartItems.innerHTML = cart.map((item, i) => `
+                    <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price.toLocaleString()} ر.س</div>
+                            <div class="cart-item-qty">
+                                <button class="qty-btn" onclick="updateQty(${i}, -1)">-</button>
+                                <span>${item.qty}</span>
+                                <button class="qty-btn" onclick="updateQty(${i}, 1)">+</button>
+                            </div>
+                        </div>
+                        <i class="fas fa-trash cart-item-remove" onclick="removeFromCart(${i})"></i>
+                    </div>
+                `).join('');
+                cartFooter.style.display = 'block';
+            }
+        }
+
+        // ===== TOGGLE FUNCTIONS =====
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+            document.getElementById('mobileMenuOverlay').classList.toggle('active');
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('active');
+            document.getElementById('mobileMenuOverlay').classList.toggle('active');
+        }
+
+        function toggleSearch() {
+            document.getElementById('searchOverlay').classList.toggle('active');
+            if (document.getElementById('searchOverlay').classList.contains('active')) {
+                setTimeout(() => document.getElementById('searchInput').focus(), 300);
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        // ===== NAVBAR SCROLL =====
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            if (window.scrollY > 500) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+
+        // ===== SCROLL ANIMATIONS =====
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+        // ===== PRODUCT FILTER =====
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+                document.querySelectorAll('.product-card').forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = 'block';
+                        setTimeout(() => card.classList.add('visible'), 50);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // ===== FORM HANDLERS =====
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            showToast('تم إرسال طلبك بنجاح! سنتواصل معك قريباً');
+            e.target.reset();
+        }
+
+        function handleNewsletter(e) {
+            e.preventDefault();
+            showToast('تم الاشتراك بنجاح! شكراً لك');
+            e.target.reset();
+        }
+
+        // ===== CLOSE OVERLAYS ON ESCAPE =====
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('mobileMenu').classList.remove('active');
+                document.getElementById('mobileMenuOverlay').classList.remove('active');
+                document.getElementById('cartSidebar').classList.remove('active');
+                document.getElementById('searchOverlay').classList.remove('active');
+            }
+        });
+
+        // ===== LANGUAGE SWITCH =====
+        function switchLang() {
+            showToast('قريباً: النسخة الإنجليزية');
+        }
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
