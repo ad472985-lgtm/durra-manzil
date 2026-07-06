@@ -549,16 +549,25 @@
                 max-width: 100%;
             }
             .hero-img-wrapper {
-                height: 100%;
-                border-radius: 0;
-                box-shadow: none;
-            }
-            .hero-img-wrapper img {
-                height: 100%;
-                object-fit: cover;
-            }
-            .hero-img-wrapper::before {
                 display: none;
+            }
+            .hero-gradient-bg {
+                position: absolute;
+                inset: 0;
+                border-radius: 0;
+                background: 
+                    radial-gradient(ellipse at 20% 50%, rgba(201, 169, 110, 0.2) 0%, transparent 50%),
+                    radial-gradient(ellipse at 80% 20%, rgba(201, 169, 110, 0.15) 0%, transparent 40%),
+                    radial-gradient(ellipse at 50% 80%, rgba(201, 169, 110, 0.1) 0%, transparent 45%),
+                    linear-gradient(135deg, #080808 0%, #0d0d0d 50%, #080808 100%);
+            }
+            .hero-gradient-bg::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: 
+                    radial-gradient(circle at 30% 40%, rgba(201, 169, 110, 0.15) 0%, transparent 30%),
+                    radial-gradient(circle at 70% 60%, rgba(201, 169, 110, 0.1) 0%, transparent 25%);
             }
             .hero-badge,
             .hero-floating {
@@ -1933,6 +1942,7 @@
         }
 
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -2104,7 +2114,7 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-img-wrapper">
-                    <img src="kitchen-hero.jpg" alt="غرفة معيشة فاخرة">
+                    <img src="https://images.unsplash.com/photo-1600585154526-7f1c3d9c1f2e?w=800&q=80" alt="غرفة معيشة فاخرة">
                 </div>
                 <div class="hero-badge">
                     <div class="hero-badge-text">معاينة وقياس مجاني</div>
@@ -3020,7 +3030,7 @@
     </script>
 
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/96601212562246" target="_blank" class="whatsapp-float" title="تواصل عبر واتساب">
+    <a href="https://api.whatsapp.com/send?phone=201212562246&text=مرحباً%20أنا%20مهتم%20بخدمات%20دورة%20المنزل" target="_blank" class="whatsapp-float" title="تواصل عبر واتساب">
         <i class="fab fa-whatsapp"></i>
     </a>
 
