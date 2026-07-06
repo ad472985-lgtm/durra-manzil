@@ -1942,6 +1942,7 @@
         }
 
     </style>
+<base target="_blank">
 </head>
 <body>
 
@@ -2694,60 +2695,89 @@
                 </div>
             </div>
             <div class="contact-form-wrapper animate">
-                <form id="contactForm" onsubmit="handleFormSubmit(event)">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">الاسم الكامل *</label>
-                            <input type="text" id="name" name="name" placeholder="أدخل اسمك الكامل" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">رقم الجوال *</label>
-                            <input type="tel" id="phone" name="phone" placeholder="05xxxxxxxx" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">البريد الإلكتروني</label>
-                            <input type="email" id="email" name="email" placeholder="example@email.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="city">المدينة *</label>
-                            <select id="city" name="city" required>
-                                <option value="">اختر المدينة</option>
-                                <option value="riyadh">الرياض</option>
-                                <option value="jeddah">جدة</option>
-                                <option value="dammam">الدمام</option>
-                                <option value="khobar">الخبر</option>
-                                <option value="makkah">مكة المكرمة</option>
-                                <option value="madinah">المدينة المنورة</option>
-                                <option value="other">مدينة أخرى</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">نوع الخدمة *</label>
-                        <select id="service" name="service" required>
-                            <option value="">اختر الخدمة</option>
-                            <option value="preview">معاينة وقياس مجاني</option>
-                            <option value="consultation">استشارة تصميم داخلي</option>
-                            <option value="order">طلب منتج</option>
-                            <option value="inquiry">استفسار عام</option>
-                            <option value="complaint">شكوى أو اقتراح</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">التفاصيل</label>
-                        <textarea id="message" name="message" placeholder="أخبرنا بالمزيد عن احتياجاتك..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary form-submit">
-                        <i class="fas fa-paper-plane"></i>
-                        إرسال الطلب
-                    </button>
-                    <p class="form-note">
-                        <i class="fas fa-lock"></i>
-                        معلوماتك محمية ولا نشاركها مع أي طرف ثالث
-                    </p>
-                </form>
+                <form class="contact-form" id="contactForm" onsubmit="return sendToWhatsApp(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>الاسم الكامل *</label>
+                                    <input type="text" id="formName" placeholder="أدخل اسمك الكامل" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>رقم الجوال *</label>
+                                    <input type="tel" id="formPhone" placeholder="05xxxxxxxx" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>البريد الإلكتروني</label>
+                                    <input type="email" id="formEmail" placeholder="example@email.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>المدينة *</label>
+                                    <select id="formCity" required>
+                                        <option value="">اختر المدينة</option>
+                                        <option value="الرياض">الرياض</option>
+                                        <option value="جدة">جدة</option>
+                                        <option value="الدمام">الدمام</option>
+                                        <option value="الخبر">الخبر</option>
+                                        <option value="مدينة أخرى">مدينة أخرى</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>نوع الخدمة *</label>
+                                <select id="formService" required>
+                                    <option value="">اختر الخدمة</option>
+                                    <option value="معاينة وقياس مجاني">معاينة وقياس مجاني</option>
+                                    <option value="استشارة تصميم">استشارة تصميم</option>
+                                    <option value="تركيب وتوصيل">تركيب وتوصيل</option>
+                                    <option value="صيانة">صيانة</option>
+                                    <option value="خدمة أخرى">خدمة أخرى</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>التفاصيل</label>
+                                <textarea id="formDetails" rows="4" placeholder="أخبرنا بالمزيد عن احتياجاتك..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">
+                                <i class="fab fa-whatsapp"></i>
+                                إرسال عبر واتساب
+                            </button>
+                        </form>
+
+                        <script>
+                        function sendToWhatsApp(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+
+                            var name = document.getElementById('formName').value;
+                            var phone = document.getElementById('formPhone').value;
+                            var email = document.getElementById('formEmail').value;
+                            var city = document.getElementById('formCity').value;
+                            var service = document.getElementById('formService').value;
+                            var details = document.getElementById('formDetails').value;
+
+                            if (!name || !phone || !city || !service) {
+                                alert('يرجى ملء جميع الحقول المطلوبة');
+                                return false;
+                            }
+
+                            var message = "طلب جديد من موقع دورة المنزل" + "%0A%0A" +
+                                          "الاسم: " + name + "%0A" +
+                                          "رقم الجوال: " + phone + "%0A" +
+                                          "الإيميل: " + (email || "غير متوفر") + "%0A" +
+                                          "المدينة: " + city + "%0A" +
+                                          "نوع الخدمة: " + service + "%0A" +
+                                          "التفاصيل: " + (details || "غير متوفر");
+
+                            var whatsappUrl = "https://api.whatsapp.com/send?phone=201212562246&text=" + encodeURIComponent(message);
+
+                            alert('سيتم فتح واتساب الآن! يرجى إرسال الرسالة.');
+
+                            window.open(whatsappUrl, '_blank');
+
+                            return false;
+                        }
+                        </script>
             </div>
         </div>
     </section>
@@ -3046,3 +3076,4 @@
 
 </body>
 </html>
+
